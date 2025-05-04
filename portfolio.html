@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tata Karthesha - Full Stack Developer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    :root {
+      --bg-color: #0f2027;
+      --text-color: #ffffff;
+      --accent: #00fff0;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --input-bg: #fff;
+      --input-text: #000;
+    }
+
+    body.light {
+      --bg-color: #f4f4f4;
+      --text-color: #111;
+      --accent: #0078d7;
+      --card-bg: #fff;
+      --input-bg: #fff;
+      --input-text: #000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 5px 15px;
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--accent);
+      transition: 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: var(--bg-color);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      padding: 0 20px;
+      gap: 50px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .profile-img-hero {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2.section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      transition: 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill {
+      background: var(--card-bg);
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .skill:hover {
+      background: var(--accent);
+      color: var(--bg-color);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1.1rem;
+      background: var(--input-bg);
+      color: var(--input-text);
+    }
+
+    button {
+      background: var(--accent);
+      color: var(--bg-color);
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      color: #bbb;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    .education-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .education-table th, .education-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .education-table th {
+      background-color: var(--accent);
+      color: var(--bg-color);
+    }
+
+    .education-table td {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tata Karthesha</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h2>Hi, I'm Tata Karthesha</h2>
+      <p>Aspiring Full Stack Developer passionate about building impactful applications using modern technologies.</p>
+    </div>
+    <img src="img.jpeg" alt="Tata Karthesha" class="profile-img-hero"/>
+  </div>
+
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <p style="text-align:center;">I am seeking a challenging role in a reputable company to work with my technical expertise to help the company grow and strengthen my abilities by working with new technologies.</p>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Educational Details</h2>
+    <table class="education-table">
+      <thead>
+        <tr>
+          <th>Qualification</th>
+          <th>Institution</th>
+          <th>Board/University</th>
+          <th>Year Of Passing</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>B.Tech</td>
+          <td>Narasaraopeta Engineering College</td>
+          <td>JNTUK</td>
+          <td>2026</td>
+          <td>80%</td>
+        </tr>
+        <tr>
+          <td>Intermediate</td>
+          <td>Srichaitanya Junior College</td>
+          <td>Board of Intermediate Education</td>
+          <td>2022</td>
+          <td>75%</td>
+        </tr>
+        <tr>
+          <td>SSC</td>
+          <td>Good Shepherd School</td>
+          <td>Board of Secondary Education</td>
+          <td>2020</td>
+          <td>97%</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-list">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">Python</div>
+      <div class="skill">SQL</div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>The Joy of Computing Using Python</h3>
+        <p>Issued by NPTEL (IIT Madras)</p>
+        <a href="nptel certificate.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>AI Virtual Internship</h3>
+        <p>Issued by CodSoft</p>
+        <a href="internship.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Python (Basic)</h3>
+        <p>Issued by HackerRank</p>
+        <a href="hackerrank certificate.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Python Foundation</h3>
+        <p>Issued by Infosys Springboard</p>
+        <a href="infosys.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Helping Hands Club</h3>
+        <p>A community service mini project aimed at assisting people in need through volunteer efforts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="social-icons">
+      <a href="https://github.com/Tatakarthesha" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+      </a>
+      <a href="https://www.linkedin.com/in/karthesha-tata-0b4071284" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+      </a>
+      <a href="https://www.facebook.com/share/1BjhgBEvsP/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+      </a>
+    </div>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>2025 Tata Karthesha. Built using HTML, CSS, Bootstrap.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+    }
+  </script>
+
+</body>
+</html>
+
