@@ -15,7 +15,7 @@
       --input-bg: #fff;
       --input-text: #000;
     }
-
+    
     body.light {
       --bg-color: #f4f4f4;
       --text-color: #111;
@@ -165,27 +165,21 @@
       color: var(--accent);
     }
 
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
+/* ===== Skills card FIX – force content to center ===== */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
+  text-align: center;
+  min-height: 220px;
+}
 
-    .skill {
-      background: var(--card-bg);
-      padding: 10px 20px;
-      border-radius: 50px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-weight: 500;
-      transition: background 0.3s;
-    }
-
-    .skill:hover {
-      background: var(--accent);
-      color: var(--bg-color);
-    }
+/* Prevent space-between behavior */
+.skill-card h3,
+.skill-card p {
+  margin: 6px 0;
+}
 
     form {
       display: flex;
@@ -262,6 +256,98 @@
       background-color: var(--card-bg);
       color: var(--text-color);
     }
+
+/* ===== Projects Cards Layout ===== */
+
+.card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+.card-content h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===== Buttons Section ===== */
+
+.card-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Live Demo Button */
+.demo-btn {
+  background: var(--accent);
+  color: var(--bg-color);
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* GitHub Button */
+.github-btn {
+  background: transparent;
+  color: var(--accent);
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+}
+
+.github-btn:hover {
+  background: var(--accent);
+  color: var(--bg-color);
+}
+
+.resume-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.resume-download-btn {
+  background: linear-gradient(135deg, #00fff0, #00b3ff);
+  color: #000;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.resume-download-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
   </style>
 </head>
 <body>
@@ -274,16 +360,17 @@
       <a href="#skills">Skills</a>
       <a href="#certifications">Certifications</a>
       <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
     <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
   <div class="hero">
-    <div class="hero-text">
-      <h2>Hi, I'm Tata Karthesha</h2>
-      <p>Aspiring Full Stack Developer passionate about building impactful applications using modern technologies.</p>
-    </div>
+<div class="hero-text">
+  <h2>Hi, I'm Tata Karthesha</h2>
+  <p>Aspiring Full Stack Developer passionate about building impactful applications using modern technologies.</p>
+</div>
     <img src="img.jpeg" alt="Tata Karthesha" class="profile-img-hero"/>
   </div>
 
@@ -310,7 +397,7 @@
           <td>Narasaraopeta Engineering College</td>
           <td>JNTUK</td>
           <td>2026</td>
-          <td>80%</td>
+          <td>7.9CGPA</td>
         </tr>
         <tr>
           <td>Intermediate</td>
@@ -330,62 +417,227 @@
     </table>
   </section>
 
-  <section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-list">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">Python</div>
-      <div class="skill">SQL</div>
-    </div>
-  </section>
+<section id="skills">
+  <h2 class="section-title">Technical Skills</h2>
 
-  <section id="certifications">
-    <h2 class="section-title">Certifications</h2>
-    <div class="card-container">
-      <div class="card">
+  <div class="card-container">
+
+    <div class="card skill-card">
+      <h3>Programming</h3>
+      <p>Python (Intermediate), Basic Data Structures & Algorithms</p>
+    </div>
+
+    <div class="card skill-card">
+      <h3>Full Stack Development</h3>
+      <p>HTML, CSS, JavaScript, React, Node.js, Express.js</p>
+    </div>
+
+    <div class="card skill-card">
+      <h3>Machine Learning</h3>
+      <p>Supervised Learning, Unsupervised Learning, ML Concepts</p>
+    </div>
+
+    <div class="card skill-card">
+      <h3>Database Management</h3>
+      <p>MongoDB, SQL (SELECT, INSERT, UPDATE, JOIN)</p>
+    </div>
+
+    <div class="card skill-card">
+      <h3>Data Analysis & Visualization</h3>
+      <p>Excel, Power BI</p>
+    </div>
+
+    <div class="card skill-card">
+      <h3>Software Testing</h3>
+      <p>API Testing using Postman & ReqBin, JSON validation</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="card-container">
+
+    <div class="card">
+      <div class="card-content">
         <h3>The Joy of Computing Using Python</h3>
         <p>Issued by NPTEL (IIT Madras)</p>
+      </div>
+      <div class="card-actions">
         <a href="nptel certificate.jpeg" target="_blank">
           <button>View Certificate</button>
         </a>
       </div>
+    </div>
 
-      <div class="card">
-        <h3>AI Virtual Internship</h3>
+    <div class="card">
+      <div class="card-content">
+        <h3>MERN Full Stack with AI</h3>
+        <p>Issued by Datavalley</p>
+      </div>
+      <div class="card-actions">
+        <a href="Internship1.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <h3>Artificial Intelligence</h3>
         <p>Issued by CodSoft</p>
+      </div>
+      <div class="card-actions">
         <a href="internship.jpeg" target="_blank">
           <button>View Certificate</button>
         </a>
       </div>
+    </div>
 
-      <div class="card">
-        <h3>Python (Basic)</h3>
+    <div class="card">
+      <div class="card-content">
+        <h3>SQL (Basic)</h3>
         <p>Issued by HackerRank</p>
-        <a href="hackerrank certificate.jpeg" target="_blank">
+      </div>
+      <div class="card-actions">
+        <a href="Hackerrank.jpeg" target="_blank">
           <button>View Certificate</button>
         </a>
       </div>
+    </div>
 
-      <div class="card">
+    <div class="card">
+      <div class="card-content">
+        <h3>Web Development Fundamentals</h3>
+        <p>Issued by IBM SkillsBuild</p>
+      </div>
+      <div class="card-actions">
+        <a href="IBM.jpeg" target="_blank">
+          <button>View Certificate</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
         <h3>Python Foundation</h3>
         <p>Issued by Infosys Springboard</p>
+      </div>
+      <div class="card-actions">
         <a href="infosys.jpeg" target="_blank">
           <button>View Certificate</button>
         </a>
       </div>
     </div>
-  </section>
 
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Helping Hands Club</h3>
-        <p>A community service mini project aimed at assisting people in need through volunteer efforts.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="card-container">
+
+    <!-- Project 1 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>Stock Price Prediction</h3>
+        <p>
+          Built a hybrid ML model combining technical indicators and sentiment analysis
+          using Python, NLP, and Machine Learning with real-time visualization via Streamlit.
+        </p>
+      </div>
+      <div class="card-actions">
+        <a href="https://stockpriceprediction-app-6jybgcntjd3zg2zcm3msfw.streamlit.app/" target="_blank">
+          <button class="demo-btn">Live Demo</button>
+        </a>
+        <a href="https://github.com/Tatakarthesha/Stock_Price_Prediction-Streamlit.git" target="_blank">
+          <button class="github-btn">GitHub Code</button>
+        </a>
       </div>
     </div>
-  </section>
+
+    <!-- Project 2 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>NASA APOD Viewer</h3>
+        <p>
+          React-based application that displays NASA’s Astronomy Picture of the Day
+          using NASA API with dynamic data fetching.
+        </p>
+      </div>
+      <div class="card-actions">
+        <a href="https://tatakarthesha.github.io/NASA-APOD-Viewer/" target="_blank">
+          <button class="demo-btn">Live Demo</button>
+        </a>
+        <a href="https://github.com/Tatakarthesha/NASA-APOD-Viewer.git" target="_blank">
+          <button class="github-btn">GitHub Code</button>
+        </a>
+      </div>
+    </div>
+
+<div class="card">
+  <div class="card-content">
+    <h3>Food App</h3>
+    <p>
+      Online food ordering platform built with MERN stack featuring user authentication,
+      responsive UI, and seamless backend integration.
+    </p>
+  </div>
+
+  <div class="card-actions">
+    <a href="https://foodiezone-project.netlify.app/signup" target="_blank">
+      <button class="demo-btn">Live Demo</button>
+    </a>
+
+    <a href="https://github.com/Tatakarthesha/food-frontend.git" target="_blank">
+      <button class="github-btn">Frontend Code</button>
+    </a>
+
+    <a href="https://github.com/Tatakarthesha/food-backend.git" target="_blank">
+      <button class="github-btn">Backend Code</button>
+    </a>
+  </div>
+</div>
+
+
+    <!-- Project 4 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>JOKEAPI</h3>
+        <p>
+          React-based platform to view random jokes with category filters,
+          favorites, and sharing functionality.
+        </p>
+      </div>
+      <div class="card-actions">
+        <a href="https://jokestream.netlify.app/" target="_blank">
+          <button class="demo-btn">Live Demo</button>
+        </a>
+        <a href="https://github.com/Tatakarthesha/JOKE-API.git" target="_blank">
+          <button class="github-btn">GitHub Code</button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="resume">
+  <h2 class="section-title">Resume</h2>
+
+  <div class="resume-btn-wrapper">
+    <a href="Karthesha_Tata_Resume.pdf" download>
+      <button class="resume-download-btn">
+        Download Resume
+      </button>
+    </a>
+  </div>
+</section>
+
 
   <section id="contact">
     <h2 class="section-title">Contact Me</h2>
@@ -410,7 +662,11 @@
   </section>
 
   <footer>
+<<<<<<< HEAD
     <p>2025 Tata Karthesha. Built using HTML, CSS, JavaScript.</p>
+=======
+    <p>2025 Tata Karthesha. Built using HTML, CSS, JavaScipt.</p>
+>>>>>>> b856bab (Updated skills, certifications, projects, internships, and resume)
   </footer>
 
   <script>
